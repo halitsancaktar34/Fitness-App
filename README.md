@@ -1,6 +1,6 @@
 <h1>FitnessApp</h1>
 
-<p>This project is a fitness application developed using React Native and Expo. The app leverages Context API, Expo Router, Axios, and React Native Reanimated to provide a comprehensive fitness experience. Users can track their workouts, manage fitness goals, and view progress.</p>
+<p>This project is a fitness application developed using React Native and Expo. The app leverages Context API, Expo Router, Axios, and React Native Reanimated to provide a comprehensive fitness experience. Users can view various fitness exercises in different categories, and they have the option to save these exercises and track them from their saved list.</p>
 
 <h2>Features</h2>
 
