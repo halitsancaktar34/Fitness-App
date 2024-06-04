@@ -1,13 +1,22 @@
 import { View, Text, TouchableOpacity } from "react-native";
-import React from "react";
+import React, { useContext, useState } from "react";
 import { Image } from "expo-image";
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
 import Animated, { FadeInDown } from "react-native-reanimated";
+import { FontAwesome } from "@expo/vector-icons";
+import { ExerciseContext } from "../context/ExerciseContext";
 
 export default function ExerciseCard({ item, router, index }) {
+  const [isMarked, setIsMarked] = useState();
+  const { addToBookmarks, bookmarks } = useContext(ExerciseContext);
+  const handlePress = () => {
+    addToBookmarks(item);
+    setIsMarked(!isMarked);
+  };
+
   return (
     <Animated.View
       entering={FadeInDown.duration(400)
@@ -31,6 +40,16 @@ export default function ExerciseCard({ item, router, index }) {
             className="rounded-[25px]"
             style={{ width: wp(44), height: hp(22) }}
           />
+          <TouchableOpacity
+            className="absolute right-3 top-1 p-1"
+            onPress={handlePress}
+          >
+            {item.isMarked || isMarked ? (
+              <FontAwesome name="bookmark" size={hp(3.5)} color={"black"} />
+            ) : (
+              <FontAwesome name="bookmark-o" size={hp(3.5)} color={"black"} />
+            )}
+          </TouchableOpacity>
         </View>
         <Text
           style={{ fontSize: hp(1.7) }}

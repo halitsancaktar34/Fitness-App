@@ -4,6 +4,7 @@ import { useRouter } from "expo-router";
 import ExerciseCard from "./ExerciseCard";
 
 export default function ExerciseList({ data }) {
+
   const router = useRouter();
   return (
     <View>
@@ -17,7 +18,7 @@ export default function ExerciseList({ data }) {
           justifyContent: "space-between",
         }}
         renderItem={({ item, index }) => (
-          <ExerciseCard index={index} item={item} router={router} />
+          <ExerciseCard index={index} item={item} router={router}/>
         )}
       />
     </View>

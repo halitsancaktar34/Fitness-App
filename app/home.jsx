@@ -1,4 +1,4 @@
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, TouchableOpacity } from "react-native";
 import React from "react";
 import {
   widthPercentageToDP as wp,
@@ -6,11 +6,13 @@ import {
 } from "react-native-responsive-screen";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { StatusBar } from "expo-status-bar";
-import { Ionicons } from "@expo/vector-icons";
+import { FontAwesome } from "@expo/vector-icons";
 import ImageSlider from "../components/ImageSlider";
 import BodyParts from "../components/BodyParts";
+import { useRouter } from "expo-router";
 
 export default function Home() {
+  const router = useRouter();
   return (
     <SafeAreaView className="flex-1 bg-white space-y-5" edges={["top"]}>
       <StatusBar style="dark" />
@@ -37,12 +39,13 @@ export default function Home() {
             style={{ height: hp(6), width: hp(6) }}
             className="rounded-full"
           />
-          <View
-            className="bg-neutral-200 rounded-full flex justify-center items-center border-[3px] border-neutral-300"
+          <TouchableOpacity
+             onPress={() => router.push({ pathname: "/bookmarks", })}
+            className="bg-neutral-100 rounded-full flex justify-center items-center border-[3px] border-neutral-300"
             style={{ height: hp(5.5), width: hp(5.5) }}
           >
-            <Ionicons name="notifications" size={hp(3)} color={"gray"} />
-          </View>
+            <FontAwesome name="bookmark" size={hp(3)} color={"black"} />
+          </TouchableOpacity>
         </View>
       </View>
       {/* ImageSlider Section */}

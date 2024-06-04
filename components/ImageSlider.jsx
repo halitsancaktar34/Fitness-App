@@ -7,7 +7,20 @@ import {
 import Carousel, { ParallaxImage } from "react-native-snap-carousel";
 import { sliderImages } from "../constants";
 
-export default function ImageSlider() {
+function ImageSlider() {
+  const ItemCard = ({ item, index }, parallaxProps) => {
+    return (
+      <View style={{ width: wp(100) - 70, height: hp(25) }}>
+        <ParallaxImage
+          source={item}
+          containerStyle={{ borderRadius: 30, flex: 1 }}
+          style={{ resizeMode: "contain" }}
+          parallaxFactor={1}
+          {...parallaxProps}
+        />
+      </View>
+    );
+  };
   return (
     <Carousel
       data={sliderImages}
@@ -23,16 +36,6 @@ export default function ImageSlider() {
     />
   );
 }
-const ItemCard = ({ item, index }, parallaxProps) => {
-  return (
-    <View style={{ width: wp(100) - 70, height: hp(25) }}>
-      <ParallaxImage
-        source={item}
-        containerStyle={{ borderRadius: 30, flex: 1 }}
-        style={{ resizeMode: "contain" }}
-        parallaxFactor={1}
-        {...parallaxProps}
-      />
-    </View>
-  );
-};
+const MemoizedImageSlider = React.memo(ImageSlider);
+
+export default MemoizedImageSlider;
